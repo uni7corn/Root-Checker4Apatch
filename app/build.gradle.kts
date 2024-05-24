@@ -3,11 +3,6 @@ plugins {
     id ("kotlin-android")
 }
 
-val envFile = rootProject.file(".env").readText().trim().split("\n")
-val env = LinkedHashMap<String, String>()
-for (i in envFile) {
-    env[i.trim().split("=")[0]] = i.trim().split("=")[1]
-}
 
 android {
     compileSdk = 34
@@ -19,10 +14,6 @@ android {
         targetSdk = 34
         versionCode = 2
         versionName = "1.0.1"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        env["DECRYPTION_KEY"]?.let { resValue("string", "DECRYPTION_KEY", it) }
-        env["VERIFICATION_KEY"]?.let { resValue("string", "VERIFICATION_KEY", it) }
     }
     buildFeatures {
         viewBinding = true
@@ -65,13 +56,11 @@ dependencies {
 
     // 3rd Party
     implementation("eu.chainfire:libsuperuser:1.1.0")
-    implementation(group="org.bitbucket.b_c", name="jose4j", version="0.7.12")
+    implementation(group = "org.bitbucket.b_c", name = "jose4j", version = "0.7.12")
+    implementation("com.google.android.gms:play-services-fido:18.1.0")
+    implementation ("com.elvishew:xlog:1.10.1")
+    implementation ("com.scottyab:rootbeer-lib:0.1.0")
 
-    // Google
-    implementation("com.google.android.play:integrity:1.3.0")
 
-    // Test
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
+

@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Root Checker"
+rootProject.name = "Root Checker For Apatch"
