@@ -58,9 +58,12 @@ dependencies {
     implementation("eu.chainfire:libsuperuser:1.1.0")
     implementation(group = "org.bitbucket.b_c", name = "jose4j", version = "0.7.12")
     implementation("com.google.android.gms:play-services-fido:18.1.0")
-    implementation ("com.elvishew:xlog:1.10.1")
+//    implementation ("com.elvishew:xlog:1.10.1")
     implementation ("com.scottyab:rootbeer-lib:0.1.0")
 
+
+    debugImplementation("com.apkfuns.logutils:library:1.7.5")
+    releaseImplementation("com.apkfuns.logutils:logutils-no-op:1.7.5")
 
 
 }

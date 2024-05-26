@@ -5,9 +5,8 @@ import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.elvishew.xlog.LogConfiguration;
-import com.elvishew.xlog.LogLevel;
-import com.elvishew.xlog.XLog;
+import com.apkfuns.logutils.LogLevel;
+import com.apkfuns.logutils.LogUtils;
 import com.gantix.JailMonkey.AdbEnabled.AdbEnabled;
 import com.gantix.JailMonkey.ExternalStorage.ExternalStorageCheck;
 import com.gantix.JailMonkey.HookDetection.HookDetectionCheck;
@@ -20,8 +19,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import eu.chainfire.libsuperuser.BuildConfig;
 
 
 /**
@@ -46,15 +43,12 @@ public class MyApplication extends Application {
 
 
     private void initLog() {
-        LogConfiguration config = new LogConfiguration.Builder()
-                .logLevel(BuildConfig.DEBUG ? LogLevel.ALL             // Specify log level, logs below this level won't be printed, default: LogLevel.ALL
-                        : LogLevel.NONE)
-                .enableThreadInfo()                                    // Enable thread info, disabled by default
-                .enableStackTrace(2)
-                .enableBorder()
-                .build();
-
-        XLog.init(config);
+        LogUtils.getLogConfig()
+                .configAllowLog(true)
+                .configTagPrefix(this.getPackageName())
+                .configShowBorders(true)
+                .configFormatTag("%d{HH:mm:ss:SSS} %t %c{-5}")
+                .configLevel(LogLevel.TYPE_VERBOSE);
 
     }
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.apkfuns.logutils.LogUtils;
 import com.gantix.JailMonkey.Rooted.RootedCheck;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        LogUtils.e(rootedCheck.getResultByDetectionMethod().get("rootBeer"));
 
     }
 
