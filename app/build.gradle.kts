@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.vineelsai.rootchecker"
-        minSdk = 29
+        minSdk = 26
         targetSdk = 34
         versionCode = 2
         versionName = "1.0.1"
